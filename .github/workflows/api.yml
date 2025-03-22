@@ -9,10 +9,18 @@ jobs:
   call-api:
     runs-on: ubuntu-latest
     steps:
-      - name: Make API request
+      - name: Add XP
         run: |
           curl -X POST https://api.duolingopro.net/request \
           -H "Authorization: Bearer ${{ secrets.PRO_TOKEN }}" \
           -H "Content-Type: application/json" \
           -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.6778.140 Safari/537.36" \
           -d '{"gain_type":"xp","amount":50}'
+
+      - name: Add Streak
+        run: |
+          curl -X POST https://api.duolingopro.net/streak \
+          -H "Authorization: Bearer ${{ secrets.PRO_TOKEN }}" \
+          -H "Content-Type: application/json" \
+          -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.6778.140 Safari/537.36" \
+          -d '{"amount":10}'
